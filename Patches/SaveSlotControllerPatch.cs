@@ -1,10 +1,6 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 namespace SkipIntro.Patches
 {
@@ -14,8 +10,7 @@ namespace SkipIntro.Patches
         [HarmonyPostfix]
         public static void Postfix(SaveSlotController __instance)
         {
-            //__instance.clickBtn1();
-            SaverLoader.global_saveindex = 0;
+            SaverLoader.global_saveindex = Plugin.DefaultSaveSlot.Value;
             SaverLoader.loadSavedGame();
             MethodInfo mi = __instance.GetType().GetMethod("checkScores", BindingFlags.NonPublic | BindingFlags.Instance);
             mi.Invoke(__instance, null);
