@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using HarmonyLib;
-using UnityEngine;
+﻿using HarmonyLib;
 using UnityEngine.SceneManagement;
 
 namespace SkipIntro
@@ -12,7 +7,7 @@ namespace SkipIntro
     internal class BrandingControllerPatch
     {
         [HarmonyPostfix]
-        public static void Postfix() 
+        public static void Postfix()
         {
             SceneManager.LoadScene("saveslot");
         }
